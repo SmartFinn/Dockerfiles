@@ -1,0 +1,12 @@
+version: "2"
+services:
+  flexget:
+    build: .
+    container_name: flexget
+    image: smartfinn/flexget
+    restart: unless-stopped
+    user: "$UID:$GID"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "~/.flexget:/config"
+      - "/media:/media"

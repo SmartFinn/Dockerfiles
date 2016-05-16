@@ -1,0 +1,15 @@
+version: "2"
+services:
+  plexmediaserver:
+    build: .
+    container_name: plexmediaserver
+    image: smartfinn/plexmediaserver
+    net: "host"
+    restart: unless-stopped
+    user: "$UID:$GID"
+    ports:
+      - "32400:32400"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "~/.plexmediaserver:/config"
+      - "/media:/media"

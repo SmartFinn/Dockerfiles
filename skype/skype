@@ -1,0 +1,26 @@
+#!/bin/sh
+
+OWNER="smartfinn"
+REPO="skype"
+NAME="$REPO"
+
+IMAGE=$(docker images -q "$OWNER/$REPO")
+
+if [ ! -d "$HOME/.Skype" ]; then
+	mkdir -p -m 700 "$HOME/.Skype"
+fi
+
+if ! docker inspect --format="{{ .State.Running }}" $NAME 2>/dev/null; then
+	docker run --rm --privileged \
+		--env="DISPLAY=unix$DISPLAY" \
+		--env="LANG=$LANG" \
+		--user=$(id -u) \
+		--volume=/etc/localtime:/etc/localtime:ro \
+		--volume=/etc/group:/etc/group:ro \
+		--volume=/etc/passwd:/etc/passwd:ro \
+		--volume=/run/user/$(id -u)/pulse:/run/pulse:ro \
+		--volume=/tmp/.X11-unix:/tmp/.X11-unix:ro \
+		--volume=$HOME/.Skype:$HOME/.Skype \
+		--volume=$HOME/Downloads:$HOME/Downloads \
+		--name $NAME $IMAGE
+fi

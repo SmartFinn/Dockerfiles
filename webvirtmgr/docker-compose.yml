@@ -1,0 +1,14 @@
+version: "2"
+services:
+  webvirtmgr:
+    build: .
+    container_name: webvirtmgr
+    image: smartfinn/webvirtmgr
+    restart: unless-stopped
+    ports:
+      - "6800:6800"
+      - "8000:8000"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/var/lib/libvirt:/var/lib/libvirt"
+      - "/var/run/libvirt/libvirt-sock:/var/run/libvirt/libvirt-sock"
