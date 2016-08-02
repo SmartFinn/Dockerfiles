@@ -38,7 +38,7 @@ push:
 	$(DOCKER) login
 	$(DOCKER) $@ $(IMAGE)
 
-rebuild: stop rm rmi build
+rebuild: rmi build
 
 rm:
 	@$(DOCKER) $@ --force --volumes $(NAME) | \
