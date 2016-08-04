@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:latest
 MAINTAINER Sergei Eremenko <https://github.com/SmartFinn>
 
 ENV TRANSMISSION_HOME=/config \
@@ -17,4 +17,4 @@ USER transmission
 VOLUME ["/config", "/media"]
 
 ENTRYPOINT ["transmission-daemon"]
-CMD ["--foreground", "--log-info"]
+CMD ["--foreground", "--log-error"]
