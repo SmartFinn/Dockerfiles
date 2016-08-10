@@ -5,6 +5,7 @@ IMAGE   ?= $(OWNER)/$(REPO):$(TAG)
 NAME    ?= $(REPO)
 DOCKER  ?= $(shell which docker)
 OPTIONS ?= --interactive --rm --tty
+CMD     ?=
 
 up: run
 
@@ -49,7 +50,7 @@ rmi:
 		xargs -I {} echo " ---> {}"
 
 run:
-	$(DOCKER) $@ $(OPTIONS) --name $(NAME) $(IMAGE)
+	$(DOCKER) $@ $(OPTIONS) --name $(NAME) $(IMAGE) $(CMD)
 
 shell:
 	@$(DOCKER) exec -it $(NAME) sh -c "/bin/bash || /bin/sh"
