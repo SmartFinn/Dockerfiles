@@ -7,11 +7,11 @@ lightweight [Python 2.7](http://www.python.org) Docker base images
 Versions
 --------
 
-| Tag    | Python | Base image    | Virtual size |
-|--------|--------|---------------|--------------|
-| latest | 2.7.11 | ubuntu:xenial |       165 MB |
-| xenial | 2.7.11 | ubuntu:xenial |       165 MB |
-| alpine | 2.7.11 | alpine:latest |        53 MB |
+| Tag    | Python | Base image    | Size                                                                                                                                                                                |
+|--------|--------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| latest | 2.7.12 | ubuntu:xenial | [![](https://images.microbadger.com/badges/image/smartfinn/python:latest.svg)](http://microbadger.com/images/smartfinn/python:latest "Get your own image badge on microbadger.com") |
+| xenial | 2.7.12 | ubuntu:xenial | [![](https://images.microbadger.com/badges/image/smartfinn/python:xenial.svg)](http://microbadger.com/images/smartfinn/python:xenial "Get your own image badge on microbadger.com") |
+| alpine | 2.7.12 | alpine:latest | [![](https://images.microbadger.com/badges/image/smartfinn/python:alpine.svg)](http://microbadger.com/images/smartfinn/python:alpine "Get your own image badge on microbadger.com") |
 
 
 Building from source
