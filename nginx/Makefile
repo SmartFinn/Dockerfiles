@@ -4,7 +4,7 @@
 
 OWNER   := smartfinn
 REPO    := nginx
-TAG     := xenial
+TAG     := latest
 OPTIONS := \
 	--detach=true \
 	--publish=80:80 \
