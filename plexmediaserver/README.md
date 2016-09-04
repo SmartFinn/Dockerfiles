@@ -13,7 +13,8 @@ Instructions
 
 2. Build and run a container:
   ```sh
-  make
+  make build
+  make run
   ```
   or build your own
   ```sh
