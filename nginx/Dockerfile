@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:latest
 MAINTAINER Sergei Eremenko <https://github.com/SmartFinn>
 
 RUN apk --no-cache add nginx gettext \
