@@ -7,7 +7,7 @@ DOCKER  ?= $(shell which docker)
 OPTIONS ?= --interactive --rm --tty
 CMD     ?=
 
-up: run
+all: build
 
 attach diff inspect logs port stats top:
 	@$(DOCKER) $@ $(NAME)
@@ -58,6 +58,8 @@ shell:
 supervisorctl:
 	@$(DOCKER) exec -it $(NAME) $@
 
-.PHONY: attach build cleanup destroy diff history inspect kill \
-	logs pause port ps pull purge push rebuild restart rm rmi \
-	run shell start stats stop supervisorctl top unpause up
+up: run
+
+.PHONY: all attach build cleanup destroy diff history inspect \
+	kill logs pause port ps pull purge push rebuild restart rm \
+	rmi run shell start stats stop supervisorctl top unpause up
