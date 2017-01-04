@@ -9,7 +9,7 @@ Versions
 
 | Tag    | Nginx  | Base image    | Size                                                                                                                                                                              |
 |--------|--------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| latest | 1.10.1 | alpine:latest | [![](https://images.microbadger.com/badges/image/smartfinn/nginx:latest.svg)](http://microbadger.com/images/smartfinn/nginx:latest "Get your own image badge on microbadger.com") |
+| latest | 1.10.2 | alpine:latest | [![](https://images.microbadger.com/badges/image/smartfinn/nginx:latest.svg)](http://microbadger.com/images/smartfinn/nginx:latest "Get your own image badge on microbadger.com") |
 
 
 Building from source
