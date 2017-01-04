@@ -11,7 +11,7 @@ Versions
 |--------|--------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | latest | 2.7.12 | ubuntu:xenial | [![](https://images.microbadger.com/badges/image/smartfinn/python:latest.svg)](http://microbadger.com/images/smartfinn/python:latest "Get your own image badge on microbadger.com") |
 | xenial | 2.7.12 | ubuntu:xenial | [![](https://images.microbadger.com/badges/image/smartfinn/python:xenial.svg)](http://microbadger.com/images/smartfinn/python:xenial "Get your own image badge on microbadger.com") |
-| alpine | 2.7.12 | alpine:latest | [![](https://images.microbadger.com/badges/image/smartfinn/python:alpine.svg)](http://microbadger.com/images/smartfinn/python:alpine "Get your own image badge on microbadger.com") |
+| alpine | 2.7.13 | alpine:latest | [![](https://images.microbadger.com/badges/image/smartfinn/python:alpine.svg)](http://microbadger.com/images/smartfinn/python:alpine "Get your own image badge on microbadger.com") |
 
 
 Building from source
