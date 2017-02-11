@@ -1,5 +1,5 @@
 FROM smartfinn/python:xenial
-MAINTAINER SmartFinn <https://github.com/SmartFinn>
+LABEL maintainer SmartFinn
 
 ENV DEBIAN_FRONTEND=noninteractive
 

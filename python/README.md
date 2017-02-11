@@ -1,21 +1,16 @@
-smartfinn/python
-================
+# smartfinn/python
 
 lightweight [Python 2.7](http://www.python.org) Docker base images
 
+## Versions
 
-Versions
---------
-
-| Tag    | Python | Base image    | Size                                                                                                                                                                                |
-|--------|--------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Tag    | Python | Base image    | Size |
+|--------|--------|---------------|------|
 | latest | 2.7.12 | ubuntu:xenial | [![](https://images.microbadger.com/badges/image/smartfinn/python:latest.svg)](http://microbadger.com/images/smartfinn/python:latest "Get your own image badge on microbadger.com") |
 | xenial | 2.7.12 | ubuntu:xenial | [![](https://images.microbadger.com/badges/image/smartfinn/python:xenial.svg)](http://microbadger.com/images/smartfinn/python:xenial "Get your own image badge on microbadger.com") |
 | alpine | 2.7.13 | alpine:latest | [![](https://images.microbadger.com/badges/image/smartfinn/python:alpine.svg)](http://microbadger.com/images/smartfinn/python:alpine "Get your own image badge on microbadger.com") |
 
-
-Building from source
---------------------
+## Building from source
 
 ```sh
 git clone https://github.com/SmartFinn/Dockerfiles.git
@@ -23,9 +18,7 @@ cd Dockerfiles/python/<tag>
 make build
 ```
 
-
-Usage
------
+## Usage
 
 #### Ubuntu based build
 
@@ -38,8 +31,7 @@ RUN BUILD_DEPS="build-essential python-all-dev" \
  && apt-get update \
  && apt-get install -y $BUILD_DEPS \
  && pip --no-cache-dir install <packages> \
- && apt-get purge -y $BUILD_DEPS \
- && apt-get autoremove -y \
+ && apt-get purge -y --auto-remove $BUILD_DEPS \
  && rm -f /var/lib/apt/lists/*.*
 ```
 

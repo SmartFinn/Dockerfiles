@@ -20,4 +20,4 @@ OPTIONS := \
 EXECUTE := $(shell test -d "${HOME}/.transmission" \
 	|| mkdir -p "${HOME}/.transmission" \
 	&& test -f "${HOME}/.transmission/settings.json" \
-	|| cp files/settings.json "${HOME}/.transmission/settings.json")
+	|| cp transmission.settings.json "${HOME}/.transmission/settings.json")

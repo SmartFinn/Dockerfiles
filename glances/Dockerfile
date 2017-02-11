@@ -1,5 +1,5 @@
 FROM smartfinn/python:alpine
-MAINTAINER Sergei Eremenko <https://github.com/SmartFinn>
+LABEL maintainer SmartFinn
 
 RUN apk --no-cache add lm_sensors \
  && apk --no-cache add --virtual .build-deps \

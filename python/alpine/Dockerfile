@@ -1,5 +1,5 @@
 FROM alpine:latest
-MAINTAINER Sergei Eremenko <https://github.com/SmartFinn>
+LABEL maintainer SmartFinn
 
 ENV LANG=C.UTF-8
 

@@ -1,5 +1,5 @@
 FROM smartfinn/python:alpine
-MAINTAINER Sergei Eremenko <https://github.com/SmartFinn>
+LABEL maintainer SmartFinn
 
 RUN pip --no-cache-dir install flexget transmissionrpc \
  && mkdir /config \

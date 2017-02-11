@@ -1,5 +1,5 @@
 FROM smartfinn/ruby:alpine
-MAINTAINER Sergei Eremenko <http://github.com/SmartFinn>
+LABEL maintainer SmartFinn
 
 RUN apk --no-cache add sqlite-libs \
  && apk --no-cache add --virtual .build-deps build-base ruby-dev sqlite-dev \

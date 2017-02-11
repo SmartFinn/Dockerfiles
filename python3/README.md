@@ -1,21 +1,16 @@
-smartfinn/python3
-=================
+# smartfinn/python3
 
 lightweight [Python 3.5](http://www.python.org) Docker base images
 
+## Versions
 
-Versions
---------
-
-| Tag    | Python | Base image    | Size                                                                                                                                                                                  |
-|--------|--------|---------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Tag    | Python | Base image    | Size |
+|--------|--------|---------------|------|
 | latest | 3.5.2  | ubuntu:xenial | [![](https://images.microbadger.com/badges/image/smartfinn/python3:latest.svg)](http://microbadger.com/images/smartfinn/python3:latest "Get your own image badge on microbadger.com") |
 | xenial | 3.5.2  | ubuntu:xenial | [![](https://images.microbadger.com/badges/image/smartfinn/python3:xenial.svg)](http://microbadger.com/images/smartfinn/python3:xenial "Get your own image badge on microbadger.com") |
 | alpine | 3.5.2  | alpine:latest | [![](https://images.microbadger.com/badges/image/smartfinn/python3:alpine.svg)](http://microbadger.com/images/smartfinn/python3:alpine "Get your own image badge on microbadger.com") |
 
-
-Building from source
---------------------
+## Building from source
 
 ```sh
 git clone https://github.com/SmartFinn/Dockerfiles.git
@@ -23,8 +18,7 @@ cd Dockerfiles/python3/<tag>
 make build
 ```
 
-Usage
------
+## Usage
 
 #### Ubuntu based build
 
@@ -37,8 +31,7 @@ RUN BUILD_DEPS="build-essential python-all-dev" \
  && apt-get update \
  && apt-get install -y $BUILD_DEPS \
  && pip3 --no-cache-dir install <packages> \
- && apt-get purge -y $BUILD_DEPS \
- && apt-get autoremove -y \
+ && apt-get purge -y --auto-remove $BUILD_DEPS \
  && rm -f /var/lib/apt/lists/*.*
 ```
 

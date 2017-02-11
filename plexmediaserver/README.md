@@ -1,22 +1,25 @@
-Docker PlexMediaServer
-======================
+# Docker PlexMediaServer
 
 Run [Plex Media Server](https://plex.tv/) (non plexpass) inside a [Docker](http://www.docker.com) container.
 
-Instructions
-------------
+## Instructions
 
 1. Clone this repository and change to the directory:
+
   ```sh
-  git clone https://github.com/SmartFinn/Dockerfiles.git && cd Dockerfiles/plexmediaserver
+  git clone https://github.com/SmartFinn/Dockerfiles.git
+  cd Dockerfiles/plexmediaserver
   ```
 
 2. Build and run a container:
+
   ```sh
   make build
   make run
   ```
+
   or build your own
+
   ```sh
   mkdir -p "$HOME/.plexmediaserver"
   docker build -t $USER/plexmediaserver .

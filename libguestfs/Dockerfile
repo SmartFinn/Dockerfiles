@@ -1,5 +1,5 @@
 FROM ubuntu:xenial
-MAINTAINER Sergei Eremenko <https://github.com/SmartFinn>
+LABEL maintainer SmartFinn
 
 ENV DEBIAN_FRONTEND=noninteractive \
     LIBGUESTFS_BACKEND=direct
