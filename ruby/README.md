@@ -8,7 +8,7 @@ lightweight [Ruby](http://www.ruby-lang.org) Docker base images
 |--------|--------|---------------|------|
 | latest | 2.3.1  | ubuntu:xenial | [![](https://images.microbadger.com/badges/image/smartfinn/ruby:latest.svg)](http://microbadger.com/images/smartfinn/ruby:latest "Get your own image badge on microbadger.com") |
 | xenial | 2.3.1  | ubuntu:xenial | [![](https://images.microbadger.com/badges/image/smartfinn/ruby:xenial.svg)](http://microbadger.com/images/smartfinn/ruby:xenial "Get your own image badge on microbadger.com") |
-| alpine | 2.3.1  | alpine:latest | [![](https://images.microbadger.com/badges/image/smartfinn/ruby:alpine.svg)](http://microbadger.com/images/smartfinn/ruby:alpine "Get your own image badge on microbadger.com") |
+| alpine | 2.4.1  | alpine:latest | [![](https://images.microbadger.com/badges/image/smartfinn/ruby:alpine.svg)](http://microbadger.com/images/smartfinn/ruby:alpine "Get your own image badge on microbadger.com") |
 
 ## Building from source
 

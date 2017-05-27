@@ -8,7 +8,7 @@ lightweight [Python 3.5](http://www.python.org) Docker base images
 |--------|--------|---------------|------|
 | latest | 3.5.2  | ubuntu:xenial | [![](https://images.microbadger.com/badges/image/smartfinn/python3:latest.svg)](http://microbadger.com/images/smartfinn/python3:latest "Get your own image badge on microbadger.com") |
 | xenial | 3.5.2  | ubuntu:xenial | [![](https://images.microbadger.com/badges/image/smartfinn/python3:xenial.svg)](http://microbadger.com/images/smartfinn/python3:xenial "Get your own image badge on microbadger.com") |
-| alpine | 3.5.2  | alpine:latest | [![](https://images.microbadger.com/badges/image/smartfinn/python3:alpine.svg)](http://microbadger.com/images/smartfinn/python3:alpine "Get your own image badge on microbadger.com") |
+| alpine | 3.6.1  | alpine:latest | [![](https://images.microbadger.com/badges/image/smartfinn/python3:alpine.svg)](http://microbadger.com/images/smartfinn/python3:alpine "Get your own image badge on microbadger.com") |
 
 ## Building from source
 
