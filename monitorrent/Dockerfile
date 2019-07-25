@@ -1,4 +1,4 @@
-FROM smartfinn/python3:alpine
+FROM smartfinn/python3-alpine:latest
 LABEL maintainer "SmartFinn (https://github.com/SmartFinn)"
 
 ENV MONITORRENT_VERSION="1.1.10" \
