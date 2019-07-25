@@ -1,5 +1,5 @@
-FROM smartfinn/python:alpine
-LABEL maintainer SmartFinn
+FROM smartfinn/python3-alpine:latest
+LABEL maintainer "SmartFinn (https://github.com/SmartFinn)"
 
 RUN pip --no-cache-dir install flexget transmissionrpc \
  && mkdir /config \

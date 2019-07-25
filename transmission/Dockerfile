@@ -1,5 +1,5 @@
 FROM alpine:latest
-LABEL maintainer SmartFinn
+LABEL maintainer "SmartFinn (https://github.com/SmartFinn)"
 
 ENV TRANSMISSION_HOME=/config \
     HOME=/media

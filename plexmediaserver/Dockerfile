@@ -1,5 +1,5 @@
-FROM ubuntu:xenial
-LABEL maintainer SmartFinn
+FROM ubuntu:bionic
+LABEL maintainer "SmartFinn (https://github.com/SmartFinn)"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -23,7 +23,10 @@ RUN apt-get update \
     /etc/default/plexmediaserver \
  ## Fixed issue with the performance and 6 channels audio encoding
  && sed -i '/name="audio.channels"/s/value="6"/value="2"/' \
-    /usr/lib/plexmediaserver/Resources/Profiles/Web.xml
+    /usr/lib/plexmediaserver/Resources/Profiles/Web.xml \
+ ## Delete pid file before start
+ && sed -i '$irm -f "$PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR/Plex Media Server/plexmediaserver.pid"' \
+    /usr/sbin/start_pms
 
 USER plex
 

@@ -7,7 +7,6 @@ REPO    := transmission
 OPTIONS := \
 	--detach=true \
 	--net=host \
-	--publish=9091:9091 \
 	--restart=unless-stopped \
 	--blkio-weight=400 \
 	--cpu-shares=512 \
