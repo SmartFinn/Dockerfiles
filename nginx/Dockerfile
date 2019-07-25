@@ -1,5 +1,5 @@
 FROM alpine:latest
-LABEL maintainer SmartFinn
+LABEL maintainer "SmartFinn (https://github.com/SmartFinn)"
 
 RUN apk --no-cache add nginx gettext \
  && ln -sf /dev/stdout /var/log/nginx/access.log \
