@@ -1,12 +1,12 @@
 # smartfinn/ruby-alpine
 
-lightweight [Ruby](http://www.ruby-lang.org) Docker base images
+lightweight [Ruby](http://www.ruby-lang.org) Docker base image
 
 ## Versions
 
 | Tag    | Ruby | Base image | Size |
 |--------|------|------------|------|
-| latest | [![Alpine Linux Edge package](https://repology.org/badge/version-only-for-repo/alpine_edge/ruby.svg)](https://repology.org/project/ruby/versions) | alpine:latest | [![](https://images.microbadger.com/badges/image/smartfinn/ruby-alpine:latest.svg)](http://microbadger.com/images/smartfinn/ruby-alpine:latest "Get your own image badge on microbadger.com") |
+| latest | [![Alpine Linux Edge package](https://repology.org/badge/version-only-for-repo/alpine_edge/ruby.svg)](https://repology.org/project/ruby/versions) | alpine:latest | [![](https://images.microbadger.com/badges/image/smartfinn/ruby-alpine.svg)](https://microbadger.com/images/smartfinn/ruby-alpine "Get your own image badge on microbadger.com") |
 
 ## Building from source
 

@@ -6,7 +6,7 @@ lightweight [NGINX](https://www.nginx.com/) Docker image
 
 | Tag    | Nginx  | Base image    | Size |
 |--------|--------|---------------|------|
-| latest | [![Alpine Linux Edge package](https://repology.org/badge/version-only-for-repo/alpine_edge/nginx.svg)](https://repology.org/project/nginx/versions) | alpine:latest | [![](https://images.microbadger.com/badges/image/smartfinn/nginx:latest.svg)](http://microbadger.com/images/smartfinn/nginx:latest "Get your own image badge on microbadger.com") |
+| latest | [![Alpine Linux Edge package](https://repology.org/badge/version-only-for-repo/alpine_edge/nginx.svg)](https://repology.org/project/nginx/versions) | alpine:latest | [![](https://images.microbadger.com/badges/image/smartfinn/nginx.svg)](https://microbadger.com/images/smartfinn/nginx "Get your own image badge on microbadger.com") |
 
 ## Building from source
 
