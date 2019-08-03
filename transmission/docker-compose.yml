@@ -1,15 +1,15 @@
-version: "2"
+version: '3'
 services:
   transmission:
     build: .
     container_name: transmission
-    image: smartfinn/transmission
-    net: "host"
+    image: smartfinn/transmission:latest
     restart: unless-stopped
-    user: "$UID:$GID"
-    ports:
-      - "9091:9091"
+    user: "${UID:-65534}:${GID:-65534}"
+    network_mode: host
+    # ports:
+    #   - 9091:9091
     volumes:
-      - "/etc/localtime:/etc/localtime:ro"
-      - "~/.transmission:/config"
-      - "/media:/media"
+      - /etc/localtime:/etc/localtime:ro
+      - "$HOME/.transmission:/config"
+      - /media:/media

@@ -1,14 +1,13 @@
 version: '3'
 services:
-  flexget:
+  monitorrent:
     build: .
-    container_name: flexget
-    image: smartfinn/flexget:latest
+    container_name: monitorrent
+    image: smartfinn/monitorrent:latest
     restart: unless-stopped
     user: "${UID:-65534}:${GID:-65534}"
     ports:
-      - 3539:3539
+      - 6687:6687
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - "$HOME/.flexget:/config"
-      - /media:/media
+      - "$HOME/.monitorrent:/config"

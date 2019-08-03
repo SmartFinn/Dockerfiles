@@ -2,13 +2,13 @@ FROM alpine:latest
 LABEL maintainer "SmartFinn (https://github.com/SmartFinn)"
 
 ENV TRANSMISSION_HOME=/config \
-    HOME=/media
-
-COPY transmission.settings.json /config/settings.json
+    HOME=/config
 
 RUN apk --no-cache add transmission-daemon \
  && test -d /config || mkdir -p /config \
- && chown -R transmission:nogroup /config /media
+ && chown -R transmission:nobody /config /media
+
+COPY transmission.settings.json /config/settings.json
 
 EXPOSE 9091
 

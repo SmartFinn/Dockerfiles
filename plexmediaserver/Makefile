@@ -7,12 +7,12 @@ REPO    := plexmediaserver
 OPTIONS := \
 	--detach=true \
 	--net=host \
-	--publish=32400:32400 \
 	--restart=unless-stopped \
 	--user=$(shell id -u):$(shell id -g) \
 	--volume=/etc/localtime:/etc/localtime:ro \
 	--volume=$(HOME)/.plexmediaserver:/config \
 	--volume=/media:/media
+#	--publish=32400:32400
 
 # create directory if not exist
 EXECUTE := $(shell test -d "${HOME}/.plexmediaserver" \

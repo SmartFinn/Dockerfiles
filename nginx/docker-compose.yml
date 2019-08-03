@@ -1,12 +1,12 @@
-version: "2"
+version: '3'
 services:
   nginx:
     build: .
     container_name: nginx
-    image: smartfinn/nginx
+    image: smartfinn/nginx:latest
     restart: unless-stopped
     ports:
-      - "80:80"
+      - 80:80
     volumes:
-      - "/etc/localtime:/etc/localtime:ro"
-      - "~/html:/usr/share/nginx/html:ro"
+      - /etc/localtime:/etc/localtime:ro
+      - "$HOME/html:/usr/share/nginx/html:ro"
