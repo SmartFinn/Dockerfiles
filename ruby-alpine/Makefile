@@ -1,6 +1,6 @@
--include ../../Dockerfile.mk
--include ../Dockerfile.mk
--include Dockerfile.mk
+-include ../../DockerHelper.mk
+-include ../DockerHelper.mk
+-include DockerHelper.mk
 
-OWNER   := smartfinn
-REPO    := ruby
+OWNER := smartfinn
+REPO  := ruby

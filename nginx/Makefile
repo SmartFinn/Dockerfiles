@@ -1,11 +1,11 @@
--include ../../Dockerfile.mk
--include ../Dockerfile.mk
--include Dockerfile.mk
+-include ../../DockerHelper.mk
+-include ../DockerHelper.mk
+-include DockerHelper.mk
 
-OWNER   := smartfinn
-REPO    := nginx
-TAG     := latest
-OPTIONS := \
+OWNER := smartfinn
+REPO  := nginx
+TAG   := latest
+RUN_OPTIONS := \
 	--detach=true \
 	--publish=80:80 \
 	--restart=unless-stopped \
@@ -13,5 +13,5 @@ OPTIONS := \
 	--volume=$(HOME)/html:/usr/share/nginx/html:ro
 
 # create directory if not exist
-EXECUTE := $(shell test -d "${HOME}/html" \
+RUN_HOOK := $(shell test -d "${HOME}/html" \
 	|| mkdir -m 775 -p "${HOME}/html")

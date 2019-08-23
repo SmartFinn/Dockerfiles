@@ -1,10 +1,10 @@
--include ../../Dockerfile.mk
--include ../Dockerfile.mk
--include Dockerfile.mk
+-include ../../DockerHelper.mk
+-include ../DockerHelper.mk
+-include DockerHelper.mk
 
-OWNER   := smartfinn
-REPO    := monitorrent
-OPTIONS := \
+OWNER := smartfinn
+REPO  := monitorrent
+RUN_OPTIONS := \
 	--detach=true \
 	--publish=6687:6687 \
 	--restart=unless-stopped \
@@ -13,5 +13,5 @@ OPTIONS := \
 	--volume=$(HOME)/.monitorrent:/config
 
 # create directory if not exist
-EXECUTE := $(shell test -d "${HOME}/.monitorrent" || \
+RUN_HOOK := $(shell test -d "${HOME}/.monitorrent" || \
 	mkdir -p "${HOME}/.monitorrent")

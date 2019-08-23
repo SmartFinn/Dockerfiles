@@ -1,12 +1,12 @@
--include ../../Dockerfile.mk
--include ../Dockerfile.mk
--include Dockerfile.mk
+-include ../../DockerHelper.mk
+-include ../DockerHelper.mk
+-include DockerHelper.mk
 
-OWNER   := smartfinn
-REPO    := transmission
-OPTIONS := \
+OWNER := smartfinn
+REPO  := transmission
+RUN_OPTIONS := \
 	--detach=true \
-	--net=host \
+	--publish=9091:9091 \
 	--restart=unless-stopped \
 	--blkio-weight=400 \
 	--cpu-shares=512 \
@@ -16,7 +16,7 @@ OPTIONS := \
 	--volume=/media:/media
 
 # create directory if not exist and copy the config
-EXECUTE := $(shell test -d "${HOME}/.transmission" \
+RUN_HOOK := $(shell test -d "${HOME}/.transmission" \
 	|| mkdir -p "${HOME}/.transmission" \
 	&& test -f "${HOME}/.transmission/settings.json" \
 	|| cp transmission.settings.json "${HOME}/.transmission/settings.json")
