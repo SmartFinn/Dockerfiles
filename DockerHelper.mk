@@ -16,6 +16,8 @@ IMAGE  ?= $(OWNER)/$(REPO):$(TAG)
 NAME   ?= $(REPO)
 DOCKER ?= docker
 BUILD_OPTIONS ?= --force-rm
+NET_NAME      ?= $(shell echo $(RUN_OPTIONS) | sed -rn "s/.*--net(|work)[= '\"]([^ '\"']+).*/\2/p")
+NET_OPTIONS   ?= --driver=bridge
 RUN_COMMAND   ?=
 RUN_OPTIONS   ?= --interactive --rm --tty
 
@@ -29,6 +31,8 @@ build:
 
 destroy: stop rm
 
+down: stop rm rmi prune
+
 images: ls
 
 history ls pull:
@@ -38,13 +42,22 @@ kill pause restart start stop unpause:
 	@$(DOCKER) $@ $(NAME) | \
 		xargs -I {} echo " ---> $@ container '{}'"
 
+network:
+	@if $(DOCKER) network ls -qf name='^$(NET_NAME)$$' | xargs -r false; then \
+		NET_NAME="$(NET_NAME)"; \
+		if test -n "$${NET_NAME%container:*}"; then \
+			$(DOCKER) network create $(NET_OPTIONS) $(NET_NAME); \
+		fi; \
+	fi
+
+networks:
+	@$(DOCKER) network ls --filter=name=$(NET_NAME)
+
 prune:
 	@$(DOCKER) system prune -f
 
 ps:
 	@$(DOCKER) container ps -a --filter=name=$(NAME)
-
-purge: stop rm rmi prune
 
 push:
 	$(DOCKER) login
@@ -60,7 +73,7 @@ rmi:
 	@$(DOCKER) image rm $(IMAGE) | \
 		xargs -I {} echo " ---> {}"
 
-run:
+run: network
 	$(DOCKER) run $(RUN_OPTIONS) --name $(NAME) $(IMAGE) $(RUN_COMMAND)
 
 shell:
@@ -69,6 +82,6 @@ shell:
 
 up: run
 
-.PHONY: default build destroy diff images history kill logs ls pause \
-	port prune ps pull purge push rebuild restart rm rmi run shell \
-	start stats stop top unpause up
+.PHONY: default build destroy down diff images history kill logs ls \
+	network networks pause port prune ps pull push rebuild restart \
+	rm rmi run shell start stats stop top unpause up
