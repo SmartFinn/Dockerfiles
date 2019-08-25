@@ -6,9 +6,8 @@ services:
     image: smartfinn/transmission:latest
     restart: unless-stopped
     user: "${UID:-65534}:${GID:-65534}"
-    network_mode: host
-    # ports:
-    #   - 9091:9091
+    ports:
+      - 9091:9091
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - "$HOME/.transmission:/config"
