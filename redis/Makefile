@@ -8,9 +8,9 @@ OWNER := smartfinn
 REPO  := redis
 RUN_OPTIONS := \
 	--detach=true \
-	--publish=6379:6379 \
+	--network=backend \
 	--restart=unless-stopped \
-	--user=$(shell id -u):$(shell id -g) \
+	--user=$(shell id -u nobody):$(shell id -g nobody) \
 	--volume=/etc/localtime:/etc/localtime:ro \
 	--volume=$(VOLUME_DATA):/data
 

@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  redis:
+    build:
+      context: .
+    image: smartfinn/redis:latest
+    container_name: redis
+    user: "${UID:-65534}:${GID:-65534}"
+    environment:
+      - TZ=Europe/Kiev
+    volumes:
+      - "${HOME}/.redis:/data"
+    restart: unless-stopped
+    networks:
+      - backend
+
+networks:
+  backend:
+    name: backend
+    driver: "bridge"
