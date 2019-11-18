@@ -1,7 +1,7 @@
 FROM smartfinn/python3-alpine:latest
 LABEL maintainer "SmartFinn (https://github.com/SmartFinn)"
 
-ENV MONITORRENT_VERSION="1.1.10" \
+ENV MONITORRENT_VERSION="1.1.11" \
     MONITORRENT_DEBUG=false \
     MONITORRENT_IP=0.0.0.0 \
     MONITORRENT_PORT=6687 \
@@ -13,8 +13,6 @@ RUN apk --no-cache add --virtual .build-deps wget unzip \
  && unzip /tmp/monitorrent.zip -d /app \
  && rm -f /tmp/monitorrent.zip \
  && apk --no-cache del .build-deps \
- ## https://github.com/werwolfby/monitorrent/issues/298
- && sed -i 's/falcon>=1.0.0/falcon==1.0.0/' app/requirements.txt \
  && pip3 --no-cache-dir install -r app/requirements.txt \
  && mkdir -p /config \
  && chown -R nobody:nogroup /app /config
