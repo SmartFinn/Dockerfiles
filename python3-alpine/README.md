@@ -21,7 +21,7 @@ make build
 ```dockerfile
 FROM smartfinn/python3-alpine:latest
 
-RUN apk --no-cache add --virtual .build-deps build-base python-dev \
- && pip3 --no-cache-dir install <packages> \
+RUN apk --no-cache add --virtual .build-deps build-base python3-dev \
+ && python3 -m pip --no-cache-dir install <packages> \
  && apk --no-cache del .build-deps
 ```
