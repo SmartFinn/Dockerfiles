@@ -1,7 +1,8 @@
 FROM smartfinn/python3-alpine:latest
 LABEL maintainer "SmartFinn (https://github.com/SmartFinn)"
 
-RUN apk --no-cache add --virtual .build-deps build-base python3-dev \
+RUN apk --no-cache add --virtual .build-deps build-base python3-dev libxml2-dev libxslt-dev \
+ && apk --no-cache add libxml2 libxslt \
  && python3 -m pip --no-cache-dir install flexget cloudscraper transmissionrpc \
  && apk --no-cache del .build-deps \
  && mkdir /config \
