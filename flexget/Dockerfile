@@ -1,7 +1,8 @@
 FROM ubuntu:bionic
 LABEL maintainer "SmartFinn (https://github.com/SmartFinn)"
 
-ENV LANG=C.UTF-8
+ENV DEBIAN_FRONTEND=noninteractive \
+    LANG=C.UTF-8
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends python3-minimal python3-pip \
