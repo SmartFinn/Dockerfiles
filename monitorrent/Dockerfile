@@ -1,19 +1,23 @@
-FROM smartfinn/python3-alpine:latest
+FROM ubuntu:bionic
 LABEL maintainer "SmartFinn (https://github.com/SmartFinn)"
 
-ENV MONITORRENT_VERSION="1.1.11" \
+ENV DEBIAN_FRONTEND=noninteractive \
+    LANG=C.UTF-8 \
+    MONITORRENT_VERSION="1.1.12" \
     MONITORRENT_DEBUG=false \
     MONITORRENT_IP=0.0.0.0 \
     MONITORRENT_PORT=6687 \
     MONITORRENT_DB_PATH=/config/monitorrent.db
 
-RUN apk --no-cache add --virtual .build-deps wget unzip \
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends python3-minimal python3-pip wget unzip \
+ && rm -f /var/lib/apt/lists/*.* \
+ && python3 -m pip --no-cache-dir install --upgrade pip setuptools \
  && wget --no-check-certificate -O /tmp/monitorrent.zip \
     https://github.com/werwolfby/monitorrent/releases/download/$MONITORRENT_VERSION/monitorrent-$MONITORRENT_VERSION.zip \
  && unzip /tmp/monitorrent.zip -d /app \
  && rm -f /tmp/monitorrent.zip \
- && apk --no-cache del .build-deps \
- && pip3 --no-cache-dir install -r app/requirements.txt \
+ && python3 -m pip --no-cache-dir install -r app/requirements.txt \
  && mkdir -p /config \
  && chown -R nobody:nogroup /app /config
 
