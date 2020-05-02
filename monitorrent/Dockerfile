@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 LABEL maintainer "SmartFinn (https://github.com/SmartFinn)"
 
 ENV DEBIAN_FRONTEND=noninteractive \
