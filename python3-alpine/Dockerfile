@@ -3,7 +3,7 @@ LABEL maintainer "SmartFinn (https://github.com/SmartFinn)"
 
 ENV LANG=C.UTF-8
 
-RUN apk --no-cache add ca-certificates python3 \
+RUN apk --no-cache add python3 py3-pip \
  && python3 -m pip --no-cache-dir install --upgrade pip setuptools \
  && ln -sf /usr/bin/pip3 /usr/bin/pip \
  && ln -sf /usr/bin/pydoc3 /usr/bin/pydoc \
