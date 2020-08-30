@@ -15,5 +15,5 @@ RUN_OPTIONS := \
 	--volume=$(VOLUME_DATA):/data
 
 # create directory if not exist
-RUN_HOOK := $(shell test -d "${VOLUME_DATA}" || \
-	mkdir -p "${VOLUME_DATA}")
+pre-run::
+	test -d "${VOLUME_DATA}" || mkdir -p "${VOLUME_DATA}"

@@ -14,5 +14,5 @@ RUN_OPTIONS := \
 	--volume=/media:/media
 
 # create directory if not exist
-RUN_HOOK := $(shell test -d "${HOME}/.flexget" || \
-	mkdir -p "${HOME}/.flexget")
+pre-run::
+	test -d "${HOME}/.$(NAME)" || mkdir -p "${HOME}/.$(NAME)"

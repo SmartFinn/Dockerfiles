@@ -43,7 +43,7 @@ kill pause restart start stop unpause:
 		xargs -I {} echo " ---> $@ container '{}'"
 
 network:
-	@if $(DOCKER) network ls -qf name='^$(NET_NAME)$$' | xargs -r false; then \
+	@if $(DOCKER) network ls -q --filter name='^$(NET_NAME)$$' | xargs -r false; then \
 		NET_NAME="$(NET_NAME)"; \
 		if test -n "$${NET_NAME%container:*}"; then \
 			$(DOCKER) network create $(NET_OPTIONS) $(NET_NAME); \
@@ -53,11 +53,13 @@ network:
 networks:
 	@$(DOCKER) network ls --filter=name=$(NET_NAME)
 
+pre-run post-run::
+
 prune:
 	@$(DOCKER) system prune -f
 
 ps:
-	@$(DOCKER) container ps -a --filter=name=$(NAME)
+	@$(DOCKER) container ls --all --filter=name=$(NAME)
 
 push:
 	$(DOCKER) login
@@ -73,8 +75,10 @@ rmi:
 	@$(DOCKER) image rm $(IMAGE) | \
 		xargs -I {} echo " ---> {}"
 
-run: network
+_run:
 	$(DOCKER) run $(RUN_OPTIONS) --name $(NAME) $(IMAGE) $(RUN_COMMAND)
+
+run: network pre-run _run post-run
 
 shell:
 	@$(DOCKER) container exec --interactive --tty $(NAME) \
@@ -83,5 +87,6 @@ shell:
 up: run
 
 .PHONY: default build destroy down diff images history kill logs ls \
-	network networks pause port prune ps pull push rebuild restart \
-	rm rmi run shell start stats stop top unpause up
+	network networks pause port post-run pre-run prune ps pull push \
+	rebuild restart rm rmi _run run shell start stats stop top \
+	unpause up

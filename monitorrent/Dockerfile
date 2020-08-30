@@ -13,7 +13,7 @@ RUN apt-get update \
  && apt-get install -y --no-install-recommends python3-minimal python3-pip wget unzip \
  && rm -f /var/lib/apt/lists/*.* \
  && python3 -m pip --no-cache-dir install --upgrade pip setuptools \
- && wget --no-check-certificate -O /tmp/monitorrent.zip \
+ && wget -O /tmp/monitorrent.zip \
     https://github.com/werwolfby/monitorrent/releases/download/$MONITORRENT_VERSION/monitorrent-$MONITORRENT_VERSION.zip \
  && unzip /tmp/monitorrent.zip -d /app \
  && rm -f /tmp/monitorrent.zip \

@@ -16,7 +16,7 @@ RUN_OPTIONS := \
 	--volume=/media:/media
 
 # create directory if not exist and copy the config
-RUN_HOOK := $(shell test -d "${HOME}/.transmission" \
-	|| mkdir -p "${HOME}/.transmission" \
-	&& test -f "${HOME}/.transmission/settings.json" \
-	|| cp transmission.settings.json "${HOME}/.transmission/settings.json")
+pre-run::
+	test -d "${HOME}/.transmission" || mkdir -p "${HOME}/.transmission"
+	test -f "${HOME}/.transmission/settings.json" || \
+		cp transmission.settings.json "${HOME}/.transmission/settings.json"
