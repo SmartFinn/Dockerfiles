@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM python:3-slim
 LABEL maintainer "SmartFinn (https://github.com/SmartFinn)"
 
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -10,9 +10,8 @@ ENV DEBIAN_FRONTEND=noninteractive \
     MONITORRENT_DB_PATH=/config/monitorrent.db
 
 RUN apt-get update \
- && apt-get install -y --no-install-recommends python3-minimal python3-pip wget unzip \
+ && apt-get install -y --no-install-recommends wget unzip \
  && rm -f /var/lib/apt/lists/*.* \
- && python3 -m pip --no-cache-dir install --upgrade pip setuptools \
  && wget -O /tmp/monitorrent.zip \
     https://github.com/werwolfby/monitorrent/releases/download/$MONITORRENT_VERSION/monitorrent-$MONITORRENT_VERSION.zip \
  && unzip /tmp/monitorrent.zip -d /app \
