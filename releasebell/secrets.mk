@@ -1,0 +1,10 @@
+RELEASEBELL_USERNAME := admin
+RELEASEBELL_PASSWORD := releasebell
+RELEASEBELL_EMAIL := finalitik+releasebell@gmail.com
+MAIL_SMTP_SERVER := smtp.gmail.com
+MAIL_SMTP_PORT := 587
+MAIL_SMTP_USERNAME := finalitik@gmail.com
+MAIL_SMTP_PASSWORD := gmailpassword
+MYSQL_USERNAME := releasebell
+MYSQL_PASSWORD := releasebell
+MYSQL_DATABASE := releasebell

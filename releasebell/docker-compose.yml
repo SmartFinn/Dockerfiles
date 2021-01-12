@@ -1,0 +1,44 @@
+version: '3.5'
+
+services:
+
+  releasebell:
+    build: .
+    image: "smartfinn/releasebell"
+    container_name: releasebell
+    ports:
+      - 3000:3000
+    environment:
+      - CLOUDRON_MAIL_SMTP_SERVER=smtp.gmail.com
+      - CLOUDRON_MAIL_SMTP_PORT=587
+      - CLOUDRON_MAIL_SMTP_USERNAME=finalitik@gmail.com
+      - CLOUDRON_MAIL_SMTP_PASSWORD=gmailpassword
+      - CLOUDRON_MAIL_FROM=finalitik@gmail.com
+      - CLOUDRON_MAIL_DOMAIN=gmail.com
+      - CLOUDRON_APP_ORIGIN=localhost
+      - CLOUDRON_MYSQL_HOST=mariadb
+      - CLOUDRON_MYSQL_USERNAME=releasebell
+      - CLOUDRON_MYSQL_PASSWORD=releasebell
+      - CLOUDRON_MYSQL_DATABASE=releasebell
+      - RELEASEBELL_USERNAME=admin
+      - RELEASEBELL_PASSWORD=releasebell
+      - RELEASEBELL_EMAIL=finalitik+releasebell@gmail.com
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    links:
+      - mariadb
+
+  mariadb:
+    image: "mariadb:latest"
+    container_name: mariadb
+    environment:
+      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_USER=releasebell
+      - MYSQL_PASSWORD=releasebell
+      - MYSQL_DATABASE=releasebell
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - mariadb-data:/var/lib/mysql
+
+volumes:
+  mariadb-data:
