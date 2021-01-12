@@ -2,8 +2,7 @@
 -include ../DockerHelper.mk
 -include DockerHelper.mk
 
-OWNER := smartfinn
-REPO  := vpnbook2proxy
+IMAGE := smartfinn/vpnbook2proxy
 RUN_OPTIONS := \
 	--detach=true \
 	--restart=unless-stopped \

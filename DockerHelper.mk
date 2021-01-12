@@ -9,17 +9,14 @@
 # @license: Unlicense (http://unlicense.org)
 # @link: https://gist.github.com/SmartFinn/7bb86b078726f0763ce0
 
-OWNER  ?= $(USER)
-REPO   ?= $(notdir $(CURDIR))
-TAG    ?= latest
-IMAGE  ?= $(OWNER)/$(REPO):$(TAG)
-NAME   ?= $(REPO)
+NAME   ?= $(notdir $(CURDIR))
+IMAGE  ?= $(NAME)
 DOCKER ?= docker
 BUILD_OPTIONS ?= --force-rm
-NET_NAME      ?= $(shell echo $(RUN_OPTIONS) | sed -rn "s/.*--net(|work)[= '\"]([^ '\"']+).*/\2/p")
-NET_OPTIONS   ?= --driver=bridge
-RUN_COMMAND   ?=
-RUN_OPTIONS   ?= --interactive --rm --tty
+NET_NAME    ?= $(shell echo $(RUN_OPTIONS) | sed -rn "s/.*--net(|work)[= '\"]([^ '\"']+).*/\2/p")
+NET_OPTIONS ?= --driver=bridge
+RUN_COMMAND ?=
+RUN_OPTIONS ?= --interactive --rm --tty
 
 default: build
 
@@ -62,7 +59,6 @@ ps:
 	@$(DOCKER) container ls --all --filter=name=$(NAME)
 
 push:
-	$(DOCKER) login
 	$(DOCKER) image push $(IMAGE)
 
 rebuild: rmi build

@@ -2,8 +2,7 @@
 -include ../DockerHelper.mk
 -include DockerHelper.mk
 
-OWNER := smartfinn
-REPO  := flexget
+IMAGE := smartfinn/flexget
 RUN_OPTIONS := \
 	--detach=true \
 	--publish=3539:3539 \

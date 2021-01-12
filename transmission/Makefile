@@ -2,8 +2,7 @@
 -include ../DockerHelper.mk
 -include DockerHelper.mk
 
-OWNER := smartfinn
-REPO  := transmission
+IMAGE := smartfinn/transmission
 RUN_OPTIONS := \
 	--detach=true \
 	--publish=9091:9091 \

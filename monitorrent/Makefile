@@ -2,8 +2,7 @@
 -include ../DockerHelper.mk
 -include DockerHelper.mk
 
-OWNER := smartfinn
-REPO  := monitorrent
+IMAGE := smartfinn/monitorrent
 RUN_OPTIONS := \
 	--detach=true \
 	--restart=unless-stopped \
