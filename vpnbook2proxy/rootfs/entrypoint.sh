@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -e
+set -ex
 
 : "${VPNBOOK_SERVER:=US1}"
 : "${VPNBOOK_PORT:=udp25000}"
@@ -15,10 +15,8 @@ rm -f /tmp/vpnbook.zip
 
 # try to get password if it's not set
 if [ -z "$VPNBOOK_PASSWORD" ]; then
-	VPNBOOK_PASSWORD=$(wget -qO- "https://mobile.twitter.com/vpnbook" |
-		awk -v RS='<[^>]+>' -v OFS='\n' '
-		/Password:[ ]/ { print $7; exit }
-		')
+	VPNBOOK_PASSWORD=$(wget -qO- "https://nitter.ca/vpnbook/rss" |
+		awk -v RS='<[^>]+>' -v OFS='\n' '/Password:[ ]/ { print $7; exit }')
 fi
 
 if [ -z "$VPNBOOK_PASSWORD" ]; then
