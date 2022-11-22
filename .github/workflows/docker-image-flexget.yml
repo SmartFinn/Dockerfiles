@@ -35,8 +35,11 @@ jobs:
 
       - name: Get the version
         id: get_version
-        run: |-
-          awk -F= '/_VER(SION)?=/ {print "TAG_VER="$2;}' ${{ env.CONTEXT_PATH }}/Dockerfile >> $GITHUB_ENV
+        run: >-
+          curl -s https://pypi.org/rss/project/flexget/releases.xml |
+          awk -F'[<>]'
+          '/<title>[vV]?[0-9]+/ {i[n++] = $3;} END {print "TAG_VER="i[0]}'
+          >> $GITHUB_ENV
 
       # Build and push Docker images with Buildx
       # https://github.com/docker/build-push-action
