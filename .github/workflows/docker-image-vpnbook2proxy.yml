@@ -1,4 +1,4 @@
-name: Build vpnbook2proxy
+name: Build vpnbook2proxy image
 
 on:
   workflow_dispatch:
@@ -36,7 +36,7 @@ jobs:
       - name: Get the version
         id: get_version
         run: |-
-          awk -F= '/_VER(SION)?=/ {gsub(/[vV]/, X); print "TAG_VER="$2;}' ${{ env.CONTEXT_PATH }}/Dockerfile >> $GITHUB_ENV
+          awk -F= '/_VER(SION)?=/ {print "TAG_VER="$2;}' ${{ env.CONTEXT_PATH }}/Dockerfile >> $GITHUB_ENV
 
       # Build and push Docker images with Buildx
       # https://github.com/docker/build-push-action
@@ -62,7 +62,9 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=schedule,pattern={{date 'YYYYMMDD'}}
-            type=raw,priority=900,value=${{ env.TAG_VER }}
+            type=semver,pattern={{version}},value=${{ env.TAG_VER }}
+            type=semver,pattern={{major}}.{{minor}},value=${{ env.TAG_VER }}
+            type=semver,pattern=v{{major}},value=${{ env.TAG_VER }}
             type=ref,event=branch
           flavor: latest=true
 
