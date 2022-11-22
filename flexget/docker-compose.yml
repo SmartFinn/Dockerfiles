@@ -3,7 +3,7 @@ services:
   flexget:
     build: .
     container_name: flexget
-    image: smartfinn/flexget:latest
+    image: ghcr.io/smartfinn/flexget:latest
     restart: unless-stopped
     user: "${UID:-65534}:${GID:-65534}"
     ports:
