@@ -64,7 +64,7 @@ jobs:
           tags: |
             type=schedule,pattern={{date 'YYYYMMDD'}}
             type=match,pattern=\d.\d+,value=${{ env.TAG_VER }}
-            type=match,pattern=\d,group=1,prefix=v,value=${{ env.TAG_VER }}
+            type=match,pattern=\d,prefix=v,value=${{ env.TAG_VER }}
             type=ref,event=branch
           flavor: latest=true
 
