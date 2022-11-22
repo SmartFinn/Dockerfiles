@@ -14,7 +14,8 @@ on:
 env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository_owner }}/trusted-cgi
+  CONTAINER_NAME: trusted-cgi
+  IMAGE_NAME: ${{ github.repository_owner }}/${{ env.CONTAINER_NAME }}
 
 jobs:
   build:
@@ -60,7 +61,7 @@ jobs:
         id: build-and-push
         uses: docker/build-push-action@v3
         with:
-          context: .
+          context: ./${{ env.CONTAINER_NAME }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
