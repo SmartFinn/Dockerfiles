@@ -15,7 +15,7 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   CONTAINER_NAME: trusted-cgi
-  IMAGE_NAME: ${{ github.repository_owner }}/${{ env.CONTAINER_NAME }}
+  IMAGE_NAME: ${{ github.repository_owner }}/${{ CONTAINER_NAME }}
 
 jobs:
   build:
