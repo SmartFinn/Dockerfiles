@@ -61,7 +61,7 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=ref
+            type=ref,event=branch
             type=schedule,pattern={{date 'YYYYMMDD'}}
             type=raw,value=${{ steps.get_version.outputs.VERSION }}
           flavor: latest=true
