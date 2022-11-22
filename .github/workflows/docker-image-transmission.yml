@@ -63,9 +63,8 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
             type=schedule,pattern={{date 'YYYYMMDD'}}
-            type=semver,pattern={{version}},value=${{ env.TAG_VER }}
-            type=semver,pattern={{major}}.{{minor}},value=${{ env.TAG_VER }}
-            type=semver,pattern=v{{major}},value=${{ env.TAG_VER }}
+            type=match,pattern=\d.\d+,value=${{ env.TAG_VER }}
+            type=match,pattern=\d,group=1,prefix=v,value=${{ env.TAG_VER }}
             type=ref,event=branch
           flavor: latest=true
 
