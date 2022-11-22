@@ -1,0 +1,80 @@
+name: Build releasebell
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '27 5 * * 6'
+  push:
+    branches:
+    - master
+    paths:
+    - 'releasebell/Dockerfile'
+    - '.github/workflows/docker-image-releasebell.yml'
+
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: ghcr.io
+  CONTEXT_PATH: ./releasebell
+  IMAGE_NAME: ${{ github.repository_owner }}/releasebell
+
+jobs:
+  build:
+
+    name: Build Docker image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      # This is used to complete the identity challenge
+      # with sigstore/fulcio when running outside of PRs.
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Get the version
+        id: get_version
+        run: |-
+          awk -F= '/_VER(SION)?=/ {gsub(/[vV]/, X); print "TAG_VER="$2;}' ${{ env.CONTEXT_PATH }}/Dockerfile >> $GITHUB_ENV
+
+      # Build and push Docker images with Buildx
+      # https://github.com/docker/build-push-action
+      - name: Setup Docker buildx
+        uses: docker/setup-buildx-action@v2
+
+      # Login against a Docker registry except on PR
+      # https://github.com/docker/login-action
+      - name: Log into registry ${{ env.REGISTRY }}
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Extract metadata (tags, labels) for Docker
+      # https://github.com/docker/metadata-action
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=schedule,pattern={{date 'YYYYMMDD'}}
+            type=raw,priority=900,value=${{ env.TAG_VER }}
+            type=ref,event=branch
+          flavor: latest=true
+
+      # Build and push Docker image with Buildx (don't push on PR)
+      # https://github.com/docker/build-push-action
+      - name: Build and push Docker image
+        id: build-and-push
+        uses: docker/build-push-action@v3
+        with:
+          context: ${{ env.CONTEXT_PATH }}
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
