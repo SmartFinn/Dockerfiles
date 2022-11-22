@@ -35,8 +35,9 @@ jobs:
 
       - name: Get the version
         id: get_version
-        run: |-
-          awk -F= '/_VER(SION)?=/ {print "TAG_VER="$2;}' ${{ env.CONTEXT_PATH }}/Dockerfile >> $GITHUB_ENV
+        run: >-
+          curl -s 'https://repology.org/badge/version-for-repo/alpine_3_16/transmission.svg' |
+          awk '{gsub(/<[^>]*>/, " "); print $(NF-1)}' >> $GITHUB_ENV
 
       # Build and push Docker images with Buildx
       # https://github.com/docker/build-push-action
