@@ -4,7 +4,7 @@ services:
 
   releasebell:
     build: .
-    image: "smartfinn/releasebell"
+    image: "ghcr.io/smartfinn/releasebell"
     container_name: releasebell
     ports:
       - 3000:3000

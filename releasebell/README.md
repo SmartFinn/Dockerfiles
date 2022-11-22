@@ -1,4 +1,4 @@
-# smartfinn/releasebell
+# ghcr.io/smartfinn/releasebell
 
 A Self-Hosted Release Notification Service. Stay on top of releases for repos you star on GitHub.
 

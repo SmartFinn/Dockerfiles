@@ -15,7 +15,7 @@ docker run
 	--dns 8.8.8.8 \
 	--dns 8.8.4.4 \
 	--volume=/etc/localtime:/etc/localtime:ro \
-	smartfinn/vpnbook2proxy:latest
+	ghcr.io/smartfinn/vpnbook2proxy:latest
 ```
 
 ### Testing

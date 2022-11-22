@@ -3,7 +3,7 @@ services:
   transmission:
     build: .
     container_name: transmission
-    image: smartfinn/transmission:latest
+    image: ghcr.io/smartfinn/transmission:latest
     restart: unless-stopped
     user: "${UID:-65534}:${GID:-65534}"
     ports:
