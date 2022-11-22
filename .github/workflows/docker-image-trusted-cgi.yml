@@ -9,7 +9,7 @@ on:
     - master
     paths:
     - 'trusted-cgi/Dockerfile'
-    - '.github/workflows/docker-trusted-cgi.yml'
+    - '.github/workflows/docker-image-trusted-cgi.yml'
 
 env:
   # Use docker.io for Docker Hub if empty
