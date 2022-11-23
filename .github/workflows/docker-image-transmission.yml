@@ -4,8 +4,8 @@ on:
   workflow_dispatch:
     inputs:
       buildArgs:
-        description: 'Pass --build-arg to docker build'
-        default: ''
+        description: "Pass --build-arg to docker build"
+        default: ""
         required: false
   schedule:
     - cron: "27 5 * * 6"
@@ -74,10 +74,10 @@ jobs:
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            type=schedule,pattern={{date 'YYYYMMDD'}}
-            type=match,pattern=\d.\d+,value=${{ env.TAG_VER }}
-            type=match,pattern=\d,prefix=v,value=${{ env.TAG_VER }}
-            type=ref,event=branch
+            type=match,priority=900,pattern=\d,prefix=v,value=${{ env.TAG_VER }}
+            type=match,priority=890,pattern=\d.\d+,value=${{ env.TAG_VER }}
+            type=schedule,priority=700,pattern={{date 'YYYYMMDD'}}
+            type=ref,priority=600,event=branch,enable=${{ github.event_name == 'push' }}
           flavor: latest=true
 
       # Build and push Docker image with Buildx (don't push on PR)
