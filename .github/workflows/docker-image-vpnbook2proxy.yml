@@ -3,13 +3,13 @@ name: Build vpnbook2proxy image
 on:
   workflow_dispatch:
   schedule:
-    - cron: '27 5 * * 6'
+    - cron: "27 5 * * 6"
   push:
     branches:
-    - master
+      - master
     paths:
-    - 'vpnbook2proxy/Dockerfile'
-    - '.github/workflows/docker-image-vpnbook2proxy.yml'
+      - "vpnbook2proxy/Dockerfile"
+      - ".github/workflows/docker-image-vpnbook2proxy.yml"
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -19,7 +19,6 @@ env:
 
 jobs:
   build:
-
     name: Build Docker image
     runs-on: ubuntu-latest
     permissions:
@@ -35,8 +34,9 @@ jobs:
 
       - name: Get the version
         id: get_version
-        run: |-
-          awk -F= '/_VER(SION)?=/ {print "TAG_VER="$2;}' ${{ env.CONTEXT_PATH }}/Dockerfile >> $GITHUB_ENV
+        run: >-
+          awk -F= '/_VER(SION)?=/ {print "TAG_VER="$2;}'
+          ${{ env.CONTEXT_PATH }}/Dockerfile >> $GITHUB_ENV
 
       # Build and push Docker images with Buildx
       # https://github.com/docker/build-push-action

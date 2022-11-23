@@ -3,13 +3,13 @@ name: Build transmission image
 on:
   workflow_dispatch:
   schedule:
-    - cron: '27 5 * * 6'
+    - cron: "27 5 * * 6"
   push:
     branches:
-    - master
+      - master
     paths:
-    - 'transmission/Dockerfile'
-    - '.github/workflows/docker-image-transmission.yml'
+      - "transmission/Dockerfile"
+      - ".github/workflows/docker-image-transmission.yml"
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -19,7 +19,6 @@ env:
 
 jobs:
   build:
-
     name: Build Docker image
     runs-on: ubuntu-latest
     permissions:

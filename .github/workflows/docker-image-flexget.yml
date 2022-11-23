@@ -3,13 +3,13 @@ name: Build flexget image
 on:
   workflow_dispatch:
   schedule:
-    - cron: '27 5 * * 6'
+    - cron: "27 5 * * 6"
   push:
     branches:
-    - master
+      - master
     paths:
-    - 'flexget/Dockerfile'
-    - '.github/workflows/docker-image-flexget.yml'
+      - "flexget/Dockerfile"
+      - ".github/workflows/docker-image-flexget.yml"
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -19,7 +19,6 @@ env:
 
 jobs:
   build:
-
     name: Build Docker image
     runs-on: ubuntu-latest
     permissions:
