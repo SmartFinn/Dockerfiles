@@ -15,7 +15,7 @@ rm -f /tmp/vpnbook.zip
 
 # try to get password if it's not set
 if [ -z "$VPNBOOK_PASSWORD" ]; then
-	VPNBOOK_PASSWORD=$(wget -qO- "https://nitter.ca/vpnbook/rss" |
+	VPNBOOK_PASSWORD=$(wget -qO- "https://nitter.net/vpnbook/rss" |
 		awk -v RS='<[^>]+>' -v OFS='\n' '/Password:[ ]/ { print $7; exit }')
 fi
 
