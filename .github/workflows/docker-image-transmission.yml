@@ -47,7 +47,7 @@ jobs:
       - name: Get the version
         id: get_version
         run: >-
-          curl -s 'https://repology.org/badge/version-for-repo/alpine_$(echo $ALPINE_VER | cut -d. -f-2 | tr . _)/transmission.svg' |
+          curl -s 'https://repology.org/badge/version-for-repo/alpine_$(echo ${{ env.ALPINE_VER }} | cut -d. -f-2 | tr . _)/transmission.svg' |
           awk '{gsub(/<[^>]*>/, " "); print "TAG_VER="$(NF-1)}' >> $GITHUB_ENV
 
       - name: Get the version from buildArgs
@@ -89,7 +89,7 @@ jobs:
           labels: |
             org.opencontainers.image.title=Transmission
             org.opencontainers.image.description=Lightweight torrent client with WebUI
-            org.opencontainers.image.url=https://transmissionbt.com
+            org.opencontainers.image.url=https://github.com/SmartFinn/Dockerfiles/pkgs/container/transmission
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
