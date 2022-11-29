@@ -47,7 +47,7 @@ jobs:
       - name: Get the version
         id: get_version
         run: >-
-          curl -s 'https://repology.org/badge/version-for-repo/alpine_$(echo ${ALPINE_VER//./_} | cut -d_ -f-2)/transmission.svg' |
+          curl -s 'https://repology.org/badge/version-for-repo/alpine_$(echo $ALPINE_VER | cut -d. -f-2 | tr . _)/transmission.svg' |
           awk '{gsub(/<[^>]*>/, " "); print "TAG_VER="$(NF-1)}' >> $GITHUB_ENV
 
       - name: Get the version from buildArgs
