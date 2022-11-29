@@ -40,14 +40,14 @@ jobs:
       - name: Get Alpine image version
         id: get_alpine_version
         run: >-
-          curl 'https://img.shields.io/docker/v/_/alpine?arch=amd64' |
+          curl -s 'https://img.shields.io/docker/v/_/alpine?arch=amd64' |
           awk -Fv '{gsub(/<[^>]*>/, " "); print "ALPINE_VER="$(NF-1)}'
           >> $GITHUB_ENV
 
       - name: Get the version
         id: get_version
         run: >-
-          curl -s 'https://repology.org/badge/version-for-repo/alpine_3_17/transmission.svg' |
+          curl -s "https://repology.org/badge/version-for-repo/alpine_$(echo $ALPINE_VER | cut -d. -f-2 | tr . _)/transmission.svg" |
           awk '{gsub(/<[^>]*>/, " "); print "TAG_VER="$(NF-1)}' >> $GITHUB_ENV
 
       - name: Get the version from buildArgs
