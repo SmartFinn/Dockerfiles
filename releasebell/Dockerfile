@@ -10,7 +10,7 @@ COPY rootfs/ /
 
 WORKDIR /app
 
-RUN apk add --no-cache ca-certificates su-exec python3 make \
+RUN apk add --no-cache ca-certificates su-exec \
  && wget -O /tmp/app.tar.gz \
     https://git.cloudron.io/cloudron/releasebell/-/archive/$RELEASEBELL_VERSION/releasebell-$RELEASEBELL_VERSION.tar.gz \
  && tar -C /app --strip-components=1 -xvzf /tmp/app.tar.gz \
