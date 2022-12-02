@@ -16,7 +16,7 @@ RUN apk add --no-cache ca-certificates su-exec python3 make \
  && tar -C /app --strip-components=1 -xvzf /tmp/app.tar.gz \
  && rm -f /tmp/app.tar.gz \
  && rm -rf /app/screenshots \
- && npm install --production
+ && npm ci --omit=dev
 
 EXPOSE 3000
 
