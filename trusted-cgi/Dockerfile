@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
 RUN apt-get update \
  && apt-get install -y --no-install-recommends wget make git openssh-client \
  && mkdir -p /tmp/trusted-cgi \
- && wget -O /tmp/trusted-cgi/trusted-cgi.tar.gz \
+ && wget --progress=dot:giga -O /tmp/trusted-cgi/trusted-cgi.tar.gz \
     https://github.com/reddec/trusted-cgi/releases/download/$TRUSTED_CGI_VER/trusted-cgi_linux_amd64.tar.gz \
  && tar -C /tmp/trusted-cgi -xzvf /tmp/trusted-cgi/trusted-cgi.tar.gz \
  && cp -v /tmp/trusted-cgi/trusted-cgi /usr/local/bin/trusted-cgi \

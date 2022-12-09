@@ -8,7 +8,7 @@ set -ex
 : "${VPNBOOK_PASSWORD:-}"
 
 # download and extract configs
-wget -O /tmp/vpnbook.zip \
+wget --progress=dot:giga -O /tmp/vpnbook.zip \
 	"https://www.vpnbook.com/free-openvpn-account/VPNBook.com-OpenVPN-$VPNBOOK_SERVER.zip"
 unzip -o /tmp/vpnbook.zip -d /config
 rm -f /tmp/vpnbook.zip
