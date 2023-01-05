@@ -1,7 +1,7 @@
 FROM python:3-slim
 LABEL maintainer "SmartFinn (https://github.com/SmartFinn)"
 
-ARG TRUSTED_CGI_VER=v0.3.6
+ARG TRUSTED_CGI_VER=v0.3.8
 
 ENV DEBIAN_FRONTEND=noninteractive \
     INITIAL_ADMIN_PASSWORD=admin \
