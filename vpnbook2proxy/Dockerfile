@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM alpine:3.16
 LABEL maintainer "SmartFinn (https://github.com/SmartFinn)"
 
 ENV VPNBOOK_SERVER="US1" \
