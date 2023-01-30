@@ -37,11 +37,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Get Apline version from Dockerfile
+        id: get_version
+        run: >-
+          awk -F: '/alpine:[0-9][0-9.]+/ {print "APLINE_VER="$2;}'
+          ${{ env.CONTEXT_PATH }}/Dockerfile >> $GITHUB_ENV
+
+      - name: Get Alpine image version
+        if: env.ALPINE_VER = ''
+        id: get_alpine_version
+        run: >-
+          curl -s 'https://img.shields.io/docker/v/_/alpine?arch=amd64' |
+          awk -Fv '{gsub(/<[^>]*>/, " "); print "ALPINE_VER="$(NF-1)}'
+          >> $GITHUB_ENV
+
       - name: Get the version
         id: get_version
         run: >-
-          awk -F= '/_VER(SION)?=/ {print "TAG_VER="$2;}'
-          ${{ env.CONTEXT_PATH }}/Dockerfile >> $GITHUB_ENV
+          curl -s "https://repology.org/badge/version-for-repo/alpine_$(echo $ALPINE_VER | cut -d. -f-2 | tr . _)/openvpn.svg" |
+          awk '{gsub(/<[^>]*>/, " "); print "TAG_VER="$(NF-1)}' >> $GITHUB_ENV
 
       - name: Get the version from buildArgs
         if: (github.event_name == 'workflow_dispatch') && (github.event.inputs.buildArgs != '')
