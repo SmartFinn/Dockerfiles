@@ -44,7 +44,7 @@ jobs:
           ${{ env.CONTEXT_PATH }}/Dockerfile >> $GITHUB_ENV
 
       - name: Get Alpine image version
-        if: env.ALPINE_VER = ''
+        if: env.ALPINE_VER == ''
         id: get_alpine_version
         run: >-
           curl -s 'https://img.shields.io/docker/v/_/alpine?arch=amd64' |
