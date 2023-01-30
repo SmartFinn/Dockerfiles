@@ -6,6 +6,10 @@ set -ex
 : "${VPNBOOK_PORT:=udp25000}"
 : "${VPNBOOK_USER:=vpnbook}"
 : "${VPNBOOK_PASSWORD:-}"
+: "${VPNBOOK_RSS_FEED:=https://nitter.pussthecat.org/vpnbook/rss}"
+
+# NOTE: You can find mirrors of nitter instances here
+# https://xnaas.github.io/nitter-instances/
 
 # download and extract configs
 wget --progress=dot:giga -O /tmp/vpnbook.zip \
@@ -15,7 +19,7 @@ rm -f /tmp/vpnbook.zip
 
 # try to get password if it's not set
 if [ -z "$VPNBOOK_PASSWORD" ]; then
-	VPNBOOK_PASSWORD=$(wget -qO- "https://nitter.net/vpnbook/rss" |
+	VPNBOOK_PASSWORD=$(wget -qO- "$VPNBOOK_RSS_FEED" |
 		awk -v RS='<[^>]+>' -v OFS='\n' '/Password:[ ]/ { print $7; exit }')
 fi
 
