@@ -40,7 +40,7 @@ jobs:
       - name: Get Apline version from Dockerfile
         id: get_alpine_image_version
         run: >-
-          awk -F: '/alpine:[0-9][0-9.]+/ {print "APLINE_VER="$2;}'
+          awk -F: '/alpine:[0-9][0-9.]+/ {print "ALPINE_VER="$2;}'
           ${{ env.CONTEXT_PATH }}/Dockerfile >> $GITHUB_ENV
 
       - name: Get Alpine image version
