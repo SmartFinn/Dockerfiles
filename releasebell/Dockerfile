@@ -1,7 +1,7 @@
 FROM node:lts-alpine
 LABEL maintainer "SmartFinn (https://github.com/SmartFinn)"
 
-ARG RELEASEBELL_VERSION=v1.7.9
+ARG RELEASEBELL_VERSION=v1.8.0
 
 ENV LANG=C.UTF-8 \
     NODE_ENV=production
