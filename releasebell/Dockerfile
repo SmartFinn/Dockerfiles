@@ -15,6 +15,9 @@ RUN apk add --no-cache ca-certificates su-exec \
     https://git.cloudron.io/cloudron/releasebell/-/archive/$RELEASEBELL_VERSION/releasebell-$RELEASEBELL_VERSION.tar.gz \
  && tar -C /app --strip-components=1 -xvzf /tmp/app.tar.gz \
  && rm -f /tmp/app.tar.gz \
+ && npm install \
+ && npm run build \
+ && rm -rf node_modules \
  && rm -rf /app/screenshots \
  && npm ci --omit=dev
 
